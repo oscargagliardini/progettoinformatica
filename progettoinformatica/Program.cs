@@ -1,4 +1,6 @@
+using System.Data;
 using System.Runtime.Remoting;
+using Microsoft.VisualBasic;
 
 internal class Program
 {
@@ -31,8 +33,12 @@ internal class Program
             return 0;
         }
 
-        static int avanzamentomappa(int posizione, int avanzamento)
+        static int avanzamentomappa(int posizione, int avanzamento,bool vc)
         {
+            if (vc=true)
+            {
+                avanzamento = avanzamento + 1;
+            }
             posizione = posizione + avanzamento;
             return posizione;
         }
@@ -130,8 +136,8 @@ internal class Program
                     Console.ReadLine();
                     int avanzamento = lanciodado();
                     Console.WriteLine("Hai lanciato il dado e avanzato di " + avanzamento + " posizioni.");
-
-                    posizione = avanzamentomappa(posizione, avanzamento);
+                    bool vc=false;
+                    posizione = avanzamentomappa(posizione, avanzamento,vc);
                     Console.WriteLine("Sei ora a: " + Mappa[posizione]);
 
                     if (posizione <= 7)
@@ -156,8 +162,11 @@ internal class Program
                         int evento = sceltaevento(posizione, fortuna);
                         if (evento == 1){
 
-                            Console.WriteLine("oh,no hai trovato un mostro nel tuo cammino devi combatterlo" );
-                            int danno = new Random().Next(5, 21);
+                            Console.WriteLine("oh,no hai trovato un grifone nel tuo cammino devi combatterlo" );
+                            Console.WriteLine(
+                                ""
+                            );
+                            int danno = new Random().Next(20, 29);
                             int dannoSubito = danno - (forza / 10);
                             if (dannoSubito < 0)
                             {dannoSubito = 0;
@@ -170,11 +179,21 @@ internal class Program
                         else if (evento == 2)
                         {
                             Console.WriteLine("hai trovato una missione secondaria che ti fara guadagnare denaro e vita");
+                            Console.WriteLine("completando la missione guadagnerai una ricompensa");
+                            Console.WriteLine("dovrai aiutare un elfo a trovare il suo anello perduto");
+                            int esitoMissione = new Random().Next(1, 11);
+                            if (esitoMissione + fortuna / 10 > 8)
+                            {
+                                Console.WriteLine("Hai completato con successo la missione!");
                             int ricompensaDenaro = new Random().Next(5, 16);
                             int ricompensaVita = new Random().Next(10, 31);
                             denaro = denaro + ricompensaDenaro;
                             vita = vita + ricompensaVita;
                             Console.WriteLine("Hai guadagnato " + ricompensaDenaro + " denaro e " + ricompensaVita + " punti vita.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Non sei riuscito a completare la missione.");
                         }
 
                     }
@@ -202,9 +221,67 @@ internal class Program
                                 Console.WriteLine("Non hai abbastanza denaro per comprare l'arma.");
                             }
                         }
+                        Console.WriteLine("puoi comprare anche un cavallo per 15 di denaro che ti fara aumenta le caselle di avanzamento del dado di 1 vuoi comprarne uno? (si/no)");
+                        Console.WriteLine(          "      .''
+                                               "  ._.-.___.' (`\
+                                                //(         ( `'.      
+                                        "     '/ )\ ).__. )          "
+                                         "   ' <' `\ ._ / '\.       "
+                                         "        `   \     \".          "
+                        )
+                        string rispostaCavallo = Console.ReadLine();
+                        if (rispostaCavallo == "si")
+                        {
+                            if (denaro >= 15)
+                            {
+                                denaro = denaro - 15;
+                                Console.WriteLine("Hai acquistato un cavallo! Ogni volta che lancerai il dado, avanzerai di 1 posizione in piu.");
+                                
+                                vc=true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Non hai abbastanza denaro per comprare il cavallo.");
+                            }
+                        }
+                        int evento = sceltaevento(posizione, fortuna);
+                        if (evento == 1)
+                        {
+                            Console.WriteLine("oh,no hai trovato un troll nel tuo cammino devi combatterlo");
+                            Console.WriteLine("");
+                            int danno = new Random().Next(30, 39);
+                            int dannoSubito = danno - (forza / 10);
+                            if (dannoSubito < 0)
+                            {dannoSubito = 0;
+                            }
+                            vita = vitaagg(vita, dannoSubito);
+                            Console.WriteLine("Hai subito " + dannoSubito + " punti di danno. La tua vita ora e di " + vita + " punti.");
+                        }
+                        else if (evento == 2)
+                        {
+                            Console.WriteLine("hai trovato una missione secondaria che ti fara guadagnare denaro e forza");
+                            Console.WriteLine("completando la missione guadagnerai una ricompensa");
+                            Console.WriteLine("dovrai aiutare un nano a difendere la sua miniera dagli orchi");
+                            Console.WriteLine("");
+                            int esitoMissione = new Random().Next(1, 11);
+                            if (esitoMissione + forza / 10 > 8)
+                            {
+                                Console.WriteLine("Hai completato con successo la missione!");
+                                int ricompensaDenaro = new Random().Next(10, 21);
+                                int ricompensavita = new Random().Next(5, 16);
+                                denaro = denaro + ricompensaDenaro;
+                                vita = vita + ricompensavita;
+                                Console.WriteLine("Hai guadagnato " + ricompensaDenaro + " denaro e " + ricompensaForza + " punti forza.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Non sei riuscito a completare la missione.");
+                            }
+
+                        }
 
                     }
-                    if (posizione <= 18)
+                    if (posizione <= 17)
                     {
                         Console.WriteLine("ti trovi nella regione di Gondor , la probabilita di incontrare mostri potenti e alta ed e molto famosa per le sue armature che aumentano la vita vuoi  comprarne una? (si/no)");
                         string risposta = Console.ReadLine();
@@ -223,6 +300,70 @@ internal class Program
                                 Console.WriteLine("Non hai abbastanza denaro per comprare l'armatura.");
                             }
                         }
+                          int evento = sceltaevento(posizione, fortuna);
+                          if(evento == 1)
+                          {
+                              Console.WriteLine("oh,no hai trovato un lupo alpha  nel tuo cammino devi combatterlo");
+                              Console.WriteLine("");
+                              int danno = new Random().Next(35, 49);
+                              int dannoSubito = danno - (forza / 10);
+                              if (dannoSubito < 0)
+                              {dannoSubito = 0;
+                              }
+                              vita = vitaagg(vita, dannoSubito);
+                              Console.WriteLine("Hai subito " + dannoSubito + " punti di danno. La tua vita ora e di " + vita + " punti.");
+                          }
+                          else if (evento == 2)
+                          {
+                              Console.WriteLine("hai trovato una missione secondaria che ti fara guadagnare denaro e forza");
+                              Console.WriteLine("completando la missione guadagnerai una ricompensa");
+                              Console.WriteLine("dovrai aiutare un guerriero a difendere la sua citta dagli assalitori");
+                              Console.WriteLine("");
+                              int esitoMissione = new Random().Next(1, 11);
+                              if (esitoMissione + forza / 10 > 8)
+                              {
+                                  Console.WriteLine("Hai completato con successo la missione!");
+                                  int ricompensaDenaro = new Random().Next(15, 26);
+                                  int ricompensaForza = new Random().Next(10, 21);
+                                  denaro = denaro + ricompensaDenaro;
+                                  forza = forza + ricompensaForza;
+                                  Console.WriteLine("Hai guadagnato " + ricompensaDenaro + " denaro e " + ricompensaForza + " punti forza.");
+                              }
+                              else
+                              {
+                                  Console.WriteLine("Non sei riuscito a completare la missione.");
+                              }
+
+                          }
+
+                    }
+                    if(posizione==18)
+                    {
+                        Console.WriteLine("ti trovi vicino al Monte Fato , la probabilita di incontrare mostri potenti e altissima preparati per l'ultimo scontro!");
+                        Console.WriteLine("oh,no hai trovato il Drago finale nel tuo cammino devi combatterlo");
+                        Console.WriteLine("
+                        
+                        
+                                     __        _
+                                                _/  \    _(\(o
+                                               /     \  /  _  ^^^o
+                                              /   !   \/  ! '!!!v'
+                                              !  !  \ _' ( \____
+                                              ! . \ _!\   \===^\)
+                                             \ \_!  / __!
+                                                \!   /    \
+                                                (\_      _/   _\ )
+                                                  \ ^^--^^ __-^ /(__
+                                                   ^^----^^    "^--v'
+                        
+                        )
+                        int danno = new Random().Next(40, 59);
+                        int dannoSubito = danno - (forza / 10);
+                        if (dannoSubito < 0)
+                        {dannoSubito = 0;
+                        }
+                        vita = vitaagg(vita, dannoSubito);
+                        Console.WriteLine("Hai subito " + dannoSubito + " punti di danno. La tua vita ora e di " + vita + " punti.");
 
                     }
                     if (posizione == Mappa.Length - 1)
@@ -237,6 +378,5 @@ internal class Program
             }
             Console.WriteLine("Game Over! La tua vita e scesa a zero.");
         }
-
 }
 
