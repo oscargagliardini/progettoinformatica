@@ -1,3 +1,7 @@
+using System.Data;
+using System.Runtime.Remoting;
+using Microsoft.VisualBasic;
+
 internal class Program
 {
     static int lanciodado()
@@ -247,6 +251,22 @@ internal class Program
                     {
                         Console.WriteLine("oh,no hai trovato un troll nel tuo cammino devi combatterlo");
                         Console.WriteLine("");
+                        Console.WriteLine("        .-\"\"\"\".");
+                        Console.WriteLine("       /       \\");
+                        Console.WriteLine("   __ /   .-.  .\\");
+                        Console.WriteLine("  /  `\\  /   \\/  \\");
+                        Console.WriteLine("  |  _ \\/   .==.==.");
+                        Console.WriteLine("  | (   \\  /____\\__\\");
+                        Console.WriteLine("   \\ \\      (_()(_()");
+                        Console.WriteLine("    \\ \\            '---._");
+                        Console.WriteLine("     \\                   \\_");
+                        Console.WriteLine("  /\\ |`       (__)________/");
+                        Console.WriteLine(" /  \\|     /\\___/");
+                        Console.WriteLine("|    \\     \\||VV");
+                        Console.WriteLine("|     \\     \\|\"\"\"\",");
+                        Console.WriteLine("|      \\     ______)");
+                        Console.WriteLine("\\       \\  /`");
+                        Console.WriteLine("jgs      \\(");
                         int danno = new Random().Next(30, 39);
                         int dannoSubito = danno - (forza / 10);
                         if (dannoSubito < 0)
@@ -262,6 +282,16 @@ internal class Program
                         Console.WriteLine("completando la missione guadagnerai una ricompensa");
                         Console.WriteLine("dovrai aiutare un nano a difendere la sua miniera dagli orchi");
                         Console.WriteLine("");
+                        Console.WriteLine(" |\\/\\/\\/|  ");
+                        Console.WriteLine(" |      |  ");
+                        Console.WriteLine(" |      |  ");
+                        Console.WriteLine(" | (o)(o)  ");
+                        Console.WriteLine(" C      _) ");
+                        Console.WriteLine("  | ,___|  ");
+                        Console.WriteLine("  |   /    ");
+                        Console.WriteLine(" /____\\    ");
+                        Console.WriteLine("/      \\");
+
                         int esitoMissione = new Random().Next(1, 11);
                         if (esitoMissione + forza / 10 > 8)
                         {
@@ -304,6 +334,20 @@ internal class Program
                     {
                         Console.WriteLine("oh,no hai trovato un lupo alpha  nel tuo cammino devi combatterlo");
                         Console.WriteLine("");
+                        Console.WriteLine("        _");
+                        Console.WriteLine("       / \\      _-'");
+                        Console.WriteLine("     _/|  \\-''- _ /");
+                        Console.WriteLine("__-' { |          \\");
+                        Console.WriteLine("    /             \\");
+                        Console.WriteLine("    /       \"o.  |o }");
+                        Console.WriteLine("    |            \\ ;");
+                        Console.WriteLine("                  ',");
+                        Console.WriteLine("       \\_         __\\");
+                        Console.WriteLine("         ''-_    \\.//");
+                        Console.WriteLine("           / '-____'");
+                        Console.WriteLine("          /");
+                        Console.WriteLine("        _'");
+                        Console.WriteLine("      _-'");
                         int danno = new Random().Next(35, 49);
                         int dannoSubito = danno - (forza / 10);
                         if (dannoSubito < 0)
@@ -319,6 +363,16 @@ internal class Program
                         Console.WriteLine("completando la missione guadagnerai una ricompensa");
                         Console.WriteLine("dovrai aiutare un guerriero a difendere la sua citta dagli assalitori");
                         Console.WriteLine("");
+                        Console.WriteLine("            ,~,");
+                        Console.WriteLine("             (((}");
+                        Console.WriteLine("             -''-.");
+                        Console.WriteLine("            (\\  /\\) ");
+                        Console.WriteLine("      ~______\\) | `\\");
+                        Console.WriteLine("   ~~~(         |  ') ");
+                        Console.WriteLine("      | )____(  |");
+                        Console.WriteLine("     /|/     ` /|");
+                        Console.WriteLine("     \\ \\      / |");
+                        Console.WriteLine("ejm  |\\|\\   /| |\\");
                         int esitoMissione = new Random().Next(1, 11);
                         if (esitoMissione + forza / 10 > 8)
                         {
@@ -371,6 +425,17 @@ internal class Program
                 if (posizione == Mappa.Length - 1)
                 {
                     Console.WriteLine("Congratulazioni! Hai raggiunto il Monte Fato e completato il gioco!");
+                    Console.WriteLine("           /\\");
+                    Console.WriteLine("          /  \\");
+                    Console.WriteLine("         /    \\");
+                    Console.WriteLine("        /      \\");
+                    Console.WriteLine("       /        \\");
+                    Console.WriteLine("      /          \\");
+                    Console.WriteLine("     /            \\");
+                    Console.WriteLine("    /              \\");
+                    Console.WriteLine("   /                \\");
+                    Console.WriteLine("  /                  \\");
+                    Console.WriteLine(" /____________________\\");
                     break;
                 }
 
