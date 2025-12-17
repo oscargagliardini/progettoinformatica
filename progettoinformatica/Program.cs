@@ -208,6 +208,21 @@ internal class Program
                 if (posizione <= 10)
                 {
                     Console.WriteLine("ti trovi nella regione di Rohan , la probabilita di incontrare mostri potenti e media ed e molto famosa per le sue armi che aumentano la forza vuoi  comprarne una? (si/no)");
+                    Console.WriteLine("    /\\");
+        Console.WriteLine("   // \\");
+        Console.WriteLine("   || |");
+        Console.WriteLine("   || |");
+        Console.WriteLine("   || |");
+        Console.WriteLine("   || |");
+        Console.WriteLine("   || |");
+        Console.WriteLine("   || |");
+        Console.WriteLine(" __ || | __");
+        Console.WriteLine("/___||_|___\\");
+        Console.WriteLine("     ww");
+        Console.WriteLine("     MM");
+        Console.WriteLine("    _MM_");
+        Console.WriteLine("   (&<>&)");
+        Console.WriteLine("    ~~~~");
                     string risposta = Console.ReadLine();
                     if (risposta == "si")
                     {
