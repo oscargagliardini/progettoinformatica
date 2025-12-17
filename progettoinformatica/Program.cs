@@ -451,7 +451,7 @@ internal class Program
                     Console.WriteLine("   /                \\");
                     Console.WriteLine("  /                  \\");
                     Console.WriteLine(" /____________________\\");
-                    break;
+                    return;
                 }
 
 
